@@ -49,6 +49,22 @@ fn mul(self : Term, n : BigInt) -> Term {
   }
 }
 
+fn op_mul(self : Term, operand : Term) -> Term {
+  match (self, operand) {
+    (Constant(c), term) => mul(term, c)
+    (term, Constant(c)) => mul(term, c)
+    _ => panic()
+  }
+}
+
+fn op_neg(self : Term) -> Term {
+  mul(self, -1)
+}
+
+fn op_sub(self : Term, operand : Term) -> Term {
+  self + -operand
+}
+ 
 struct Context {
   mut next_var : UInt
 }
