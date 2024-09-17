@@ -97,3 +97,7 @@ fn forall(self : Context, f : (Var) -> Formula) -> Formula {
   let var = self.next_var()
   Forall(var, f(var))
 }
+
+fn main {
+  println("presburger")
+}
